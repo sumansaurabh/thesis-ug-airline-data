@@ -1,0 +1,10 @@
+2015-05-03 23:06:22,261 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-3dff78012a1034aae2f9b4cd55b8e0fb#rhipe-temp-params-3dff78012a1034aae2f9b4cd55b8e0fb
+2015-05-03 23:06:22,291 DEBUG [main][org.godhuli.rhipe.RHMR] /results/NYCOrigin
+2015-05-03 23:06:22,622 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-03 23:06:22,657 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-03 23:06:22,657 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded
+2015-05-03 23:12:02,321 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-8c1a4093cd162ebad6a2647b3200a671#rhipe-temp-params-8c1a4093cd162ebad6a2647b3200a671
+2015-05-03 23:12:02,335 DEBUG [main][org.godhuli.rhipe.RHMR] /results/NYCOrigin
+2015-05-03 23:12:02,683 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-03 23:12:02,706 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-03 23:12:02,707 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded

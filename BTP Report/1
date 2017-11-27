@@ -1,0 +1,83 @@
+
+In this paper, we investigate and visualize data for
+domestic flights that originated or terminated at Raleigh
+Durham International airport (RDU). The data set
+contains over 2 million flights from October 1987 to
+December 2008. Some of the questions we used to direct
+the visualization project were:
+
+To illustrate these data manipulation verbs in action, we consider analysis of airline delays in
+the United States. This dataset, constructed from information made available by the Bureau of Transportation
+Statistics, was utilized in the ASA Data Expo 2009 (see Wickham’s paper in JCGS). This rich data repository
+2contains more than 150 million observations corresponding to each commercial airline flight in the United
+States between 1987 and 2012. (The magnitude of this dataset precludes loading it directly in R, or most
+other general purpose statistical packages.)
+We demonstrate how to undertake analysis using the tools in the dplyr package. (A smaller dataset is
+available for New York City flights in 2013 within the nycflights13 package. The interface in R is almost
+identical in terms of the dplyr functionality, with the same functions being used.)
+Students can use this dataset to address questions that they find real and relevant. (It is not hard to find
+motivation for investigating patterns of flight delays. Ask students: have you ever been stuck in an airport
+because your flight was
+
+As datasets get larger, real-time visualization becomes more difficult.
+Consider a dataset with a billion entries. If we compute a summary
+of the dataset and visualize it, the natural question becomes “does the
+summary represent the data well?” and the problem has simply shifted
+to “how can we visualize one billion residuals”? Even drawing the
+simplest scatterplot is not straightforward. If we decide to produce
+the visualization by scanning the rows of a table, we will either need
+non-trivial parallel rendering algorithms or significant time to produce
+a drawing. Neither of these solutions scales well with dataset size
+
+We live in a world where every bits of information are digitalized and is collected in ever increasing amounts, summarizing more of what people and machines do, and capturing finer granularity of their behavior. The three ways sometimes used to characterize this information are described as 3V's : Volume, Variety, and Velocity as the definition of Big data. They are collected because of the perceived value in the data even if we don’t know exactly what we will do with it. These high volume, high velocity and high variety of information assets require new form of processing to enable enhanced decision making insight discovery \& process optimization.
+
+Unlike many other industry buzzwords, the origin of Big Data cannot be traced back to a specific vendor or individual.“Big Data” is a curious phrase and everyone has it's own definition. There is very rarely a significant difference from one definition to the next but what Big Data is now almost universally understood to refer to the realization of greater business intelligence by storing, processing, and analyzing data from multiple sources and is joined and aggregated in arbitrary ways enabling deeper analyses than any one system can provide which was previously ignored due to the limitations of traditional data management technologies.
+
+The technological advancement has allowed increasing ‘datafication’ of the world. Means are built to harness data . The increased use of interactive applications and websites as well as sensors, meters, and other data-generating machines has bought an increasing volume of data. At the same time, the cost of storage and processing has become economical. The result is that it is now more economically feasible to store, process, and analyze data that was previously ignored or under-utilized such as web and network log data, or social media content. But much of the data being produced lacks the structure e.g. Twitter data with hash tags, abbreviations, typos and colloquial speech. This term being coined as Veracity. This succinctly highlights the need of data quality, data cleansing, master data management, and data governance to create a Value out of it.
+
+The ongoing importance of consuming and extrapolating “Total Data” for new business processes and analytics approach to take advantage of it requires new technologies in Distributed Systems and Cloud Computing together with the latest software and analysis approaches to store and process data to Value. The adoption of new data processing technologies and techniques that complement established analytics approaches promises to deliver new levels of business intelligence, customer service, and revenue opportunities. 
+
+Data! Data! Data! he cried impatiently. I can’t make bricks without clay!
+
+
+Apache Hadoop is a platform that provides pragmatic, cost-effective, scalable infrastructure for building analytic solution on Big Data. It's a batch processing system that operates on a distributed filesystem called the Hadoop Distributed Filesystem (HDFS) and a computation layer that implements a processing paradigm called MapReduce processing of large data sets using simple MapReduce programming models. It is designed to scale up from a single server to thousands of machines, processing a very large dataset distributively with a very high degree of fault tolerance. Rather than relying on high-end hardware, the resiliency of these clusters comes from the software’s ability to detect and handle failures at the application layer.
+
+Hadoop uses a cluster of plain old commodity servers with no specialized
+hardware or network infrastructure to form a single, logical, storage and compute platform, or cluster, that can be shared by multiple individuals or groups. Computation in Hadoop MapReduce is performed in parallel, automatically, with a simple abstraction for developers that obviates complex synchronization and network programming. Unlike many other distributed data processing systems, Hadoop runs the user-provided processing logic on the machine where the data lives rather than dragging the data across the network, a huge win for performance.
+
+It is created by Doug Cutting, the creator of Apache Lucene, the widely used text search library. Hadoop has its origins in Apache Nutch, an open source web search engine, itself a part of the Lucene project. MapReduce is a programming modal used by Hadoop was made popular by Google where in a task is divided in to small portions and distributed to a large number of nodes for processing (map), and the results are then summarized in to the final answer (reduce).
+
+MapReduce paradigm has become a popular way of expressing distributed data processing problems that need to deal with large amount of data. MapReduce is used by a number of organizations worldwide for diverse tasks such as application log processing, user behavior analysis, processing scientific data, web crawling and indexing etc. Many organizations utilize cloud computing services to acquire resources needed to process MapReduce jobs on demand. As a result of the popularity of using MapReduce in the cloud, cloud services such as the Amazon Elastic MapReduce have also become available. The Apache Hadoop framework is the leading open source implementation of the MapReduce model.
+
+In this research, statistical models of airport delay and single flight arrival delay were developed. The models use the Airline On-Time Performance Data from the Federal Aviation Administration (FAA) and the Surface Airways Weather Data from the National Climatic Data Center (NCDC). Multivariate regression, ANOVA, neural networks and logistic regression were used to detect the pattern of airport delay, aircraft arrival delay and schedule performance. These models are then integrated in the form of a system for aircraft delay analysis and airport delay assessment. The assessment of an airport’s schedule performance is discussed.
+
+Flight delays are quite frequent (19\% of the US domestic flights arrive more than 15 minutes late), and are a major source of frustration and cost for the passengers. As we will see, some flights are more frequently delayed than others, and there is an interest in providing this information to travelers. As delays are a stochastic phenomenon, it is interesting to study their entire probability distributions, instead of looking for an average value.
+
+Due to the increasing popularity of cheap digital photography equipment,
+personal computing devices with easy to use cameras, and an overall im-
+provement of image capture technology with regard to quality, the amount
+of data generated by people each day shows trends of growing faster than the
+processing capabilities of single devices. For other tasks related to large-scale
+data, humans have already turned towards distributed computing as a way
+to side-step impending physical limitations to processing hardware by com-
+bining the resources of many computers and providing programmers various
+different interfaces to the resulting construct, relieving them from having to
+account for the intricacies stemming from it’s physical structure. An example
+of this is the MapReduce model, which - by way of placing all calculations
+to a string of Input-Map-Reduce-Output operations capable of working in-
+dependently - allows for easy application of distributed computing for many
+trivially parallelised processes. With the aid of freely available implemen-
+tations of this model and cheap computing infrastructure offered by cloud
+providers, having access to expensive purpose-built hardware or in-depth un-
+derstanding of parallel programming are no longer required of anyone who
+wishes to work with large-scale image data. In this thesis, I look at the I look at the issues of processing two kinds of such data - large data-sets of regular images and single large images - using MapReduce. By further classifying image pro-
+cessing algorithms to iterative/non-iterative and local/non-local, I present a
+general analysis on why different combinations of algorithms and data might
+be easier or harder to adapt for distributed processing with MapReduce.
+Finally, I describe the application of distributed image processing on two ex-
+ample cases: a 265GiB data-set of photographs and a 6.99 gigapixel image.
+Both preliminary analysis and practical results indicate that the MapReduce
+model is well suited for distributed image processing in the first case, whereas
+in the second case, this is true for only local non-iterative algorithms, and
+further work is necessary in order to provide a conclusive decision.
+

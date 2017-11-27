@@ -1,0 +1,94 @@
+Aviation and air travel has established itself as a key economic and social resource in modern times. As the world population increases and becomes ever more interconnected, the demand for air travel will only increase. Currently there are over 100,000 commercial aviation flights and over 200,000 general aviation flights within the national airspace system (NAS) every day. This does not include military sorties or other, special purpose, flights within the NAS. The number of passengers flying to or from the U.S. is expected to grow an
+average of 4.5\% annually, with cargo amounts showing a similar increase, while general aviation is expected to
+grow 1\% annually. In addition, there is increasing interest, from both government and commercial sectors, in integrating unmanned aerial vehicles (UAV’s) into the NAS. Though full UAV integration poses its own unique set of complications, nevertheless it is only a matter of time before they contribute to the air traffic over the NAS. This constant increase in air traffic within the increasingly congested NAS will require new methods and techniques to efficiently accommodate new traffic.
+
+To address these issues, the US Congress approved plans for the development of the Next Generation Air Transportation System (NextGen). It is an overhaul of the current NAS with the goals of allowing more aircraft to safely fly closer together with more direct
+routes. It is scheduled for implementation in stages between 2012 and 2025 with 5 major elements: (i) Automatic dependent surveillance-broadcast (ADS-B) will replace radar systems with satellite based global positioning information for each aircraft. This infor- mation will be broadcast in realtime to airports another aircraft within a 150 mile radius allowing them to fly closer without jeopardizing safety. (ii) Systemwide information management (SWIM) is a consolidation of multiple information systems into a single coherent system and will reduce redundancy and facilitate information sharing. (iii) NextGen data communication will add data links between aircraft and air traffic controllers to the current two-way voice communication. (iv) NextGen network enabled weather is an ambitious effort to fuse data from tens of thousands of ground, air, and space based sensors into a single national weather information system to provide realtime weather information. (v) NAS voice switch (NVS) will replace multiple existing voice switching systems into a single consolidated air/ground and ground/ground voice communication system.The NextGen system will provide the infrastructure to allow aircraft to safely fly closer together thereby making more efficient use of limited airspace. It will allow aircraft to use more direct routes instead of being constrained to predetermined sky highways thereby
+reducing congestion and reduce fuel costs. With pieces of the NextGen infrastructure coming into place, there is an opportunity to further their benefits by developing software tools that provide added value.
+
+ This paper focuses on visual analysis tools to study the changes on air traffic congestion in span of 21 years which would allow policy makers to see the effects of changing the aircraft separation volume on congestion. The same tool can also be used as a decision aid for processing requests for unmanned aerial vehicle operations. Specifically, this paper will discuss methods
+and tools used to calculate and render air traffic densities over areas of interest, as well as methods for aggregating such traffic densities over different time scales to extract fluctuations and periodic cycles in traffic patterns. We apply these tools to study the effects of possible modifications to the current en-route aircraft separation requirements. These modification, which are based on the characteristics of large fixed wing aircraft, has the potential of increasing the amount of available air space, allowing for future increases in overall air traffic numbers. In addition, we apply the same suite of tools to provide a quick visual inspection of planned UAV operation under different aircraft separation requirements. The studies conducted in this paper are based on a data set which is constructed from information made available by the Bureau of Transportation Statistics, 
+
+There are over 300,000 flightswithin the United States every day. In the future, daily air traffic number of all varieties are expected to continue rising. In addition, there is increasing interest in integrating unmanned aerial vehicles, for both government and commercial interests, into the national airspace system (NAS). This large growth in aviation operations will only increase traffic within the already limited NAS, leading to higher congestion and less free airspace. In this report, we present visual analysis tools
+to study the changes on air traffic congestion in span of 21 years. The tools support visualization of time-varying
+air traffic density over an area of interest using different time granularity. We use this visual analysis
+platform to investigate how changing the aircraft separation volume can reduce congestion while maintaining key safety requirements. The same tool can also be used as a decision aid for processing requests for unmanned aerial vehicle operations.
+
+To present our analysis on traffic we utilized Airline Data presented at ASA Data Expo 2009. This dataset is constructed from information made available by the Bureau of Transportation Statistics, USA. It consists of more than 120 million records corresponding to each commercial airline flight in the United States between 1987 and 2008. As datasets gets larger, real-time visualization becomes more difficult. Supposedly a dataset with a billion entries. If we compute a summary of the dataset and visualize it we will either need non-trivial parallel rendering algorithms or significant time to produce a drawing. This solutions would not scale well. To perform analysis we need to mine relevant data using MapReduce programming. 
+ 
+
+\subsection{Data}
+The data comes originally from RITA where it is described in detail. It can download the data there, or from the bzipped csv files listed below. These files have derivable variables removed, are packaged in yearly chunks and have been more heavily compressed than the originals.
+
+\begin{tabular}{llll}
+	Variable & Description & Variable & Description\\
+	Year & 1987-2008 & DepDelay & departure delay, in minutes\\
+	Month & 1-12 & Origin & 	origin IATA airport code\\
+	DayofMonth & 1-31 & Dest & 	destination IATA airport code\\
+	DayOfWeek & 1 (Monday) - 7 (Sunday) & Distance & in miles\\
+	DepTime & actual departure time (local, hhmm) & TaxiIn & taxi in time, in minutes\\
+	CRSDepTime & scheduled departure time (local, hhmm) & TaxiOut & taxi out time in minutes\\
+	ArrTime & actual arrival time (local, hhmm) & Cancelled & was the flight cancelled?\\
+	CRSArrTime  & scheduled arrival time (local, hhmm) & CancellationCode & 	reason for cancellation (A = carrier, B = weather, C = NAS, D = security)\\
+	UniqueCarrier & 	unique carrier code & Diverted & 1 = yes, 0 = no\\
+	FlightNum & flight number & CarrierDelay & in minutes\\
+	TailNum & plane tail number & WeatherDelay & in minutes\\
+	ActualElapsedTime  & in minutes & NASDelay & in minutes\\
+	CRSElapsedTime &  	in minutes & SecurityDelay & in minutes\\
+	AirTime & in minutes & LateAircraftDelay & in minutes\\
+	ArrDelay & arrival delay, in minutes &  & \\
+\end{tabular}
+
+
+
+
+
+
+\subsection{Goal}
+This is intentionally vague in order to allow different entries to focus on different aspects of the data, but here are a few ideas to that we focussed on :
+\vspace*{-2mm}
+\begin{description}
+  \item[-] Summarize data by time periods, airport, and carrier
+
+  \vspace*{-4mm}
+
+  \item[-] Temporal effects
+  \vspace*{-4mm}
+  \begin{description}
+  \item[-] Are some time periods more prone to delays than others?
+  \vspace*{-3mm}
+  \item[-] Relationships between delays and \textit{Seasonal factors}: winter, summer, holidays \textit{Weather factors}: Blizzards and severe weather \textit{Daily factors}: Time of day, day of week
+  \end{description}
+  \vspace*{-4mm}
+  \item[-] Spatial effects
+  \vspace*{-2mm}
+  \begin{description}
+  \item[-] Are some airports more prone to delays than others?
+  \end{description}
+  \vspace*{-2mm}
+  \item[-] Carrier effects
+  \begin{description}
+    \vspace*{-2mm}
+  \item[-] Are some carriers more prone to delays than others?
+  \end{description}
+
+  \vspace*{-4mm}
+  \item[-] Analysis of traffic on New York and Chicago a densly populated metropolitan cities in USA?
+
+\end{description}
+
+\subsection{Tools Used} % (fold)
+Rhipe packages are used for the development of the MapReduce modal. R is used for Visualization along with googleVis and Shiny app to make it interactive.
+
+\subsubsection{R}
+R is a programming language and software environment for statistical computing and graphics. The R language is widely used among statisticians and data miners for developing statistical software and data analysis.
+
+\subsubsection{Rhipe}
+RHIPE is an R package that provides a way to use Hadoop from R. It can be used on its own or as part of the Tessera environment. RHIPE (hree-pay') is the R and Hadoop Integrated Programming Environment. RHIPE is a merger of R and Hadoop. R is the widely used, highly acclaimed interactive language and environment for data analysis. Hadoop consists of the Hadoop Distributed File System (HDFS) and the MapReduce distributed compute engine. RHIPE allows an analyst to carry out D\&R analysis of complex big data wholly from within R. RHIPE communicates with Hadoop to carry out the big, parallel computations. 
+
+\subsubsection{ggplot}
+ggplot2 is a plotting system for R, based on the grammar of graphics, which tries to take the good parts of base and lattice graphics and none of the bad parts. It takes care of many of the fiddly details that make plotting a hassle (like drawing legends) as well as providing a powerful model of graphics that makes it easy to produce complex multi-layered graphics.
+
+
+
+

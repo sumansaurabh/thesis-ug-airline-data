@@ -1,0 +1,261 @@
+Abstract
+Air travel plays a crucial role in the functioning of todays globalized world. There are over 300,000 flights
+within the United States every day. In the future, daily air traffic number of all varieties are expected to continue rising. In addition, there is increasing interest in integrating unmanned aerial vehicles, for both government and commercial interests, into the national airspace system (NAS). This large growth in aviation operations will only increase traffic within the already
+limited NAS, leading to higher congestion and less free airspace. In this paper, we present visual analysis tools
+to study the impact of policy changes on air traffic congestion. The tools support visualization of time-varying
+air traffic density over an area of interest using different time granularity. We use this visual analysis
+platform to investigate how changing the aircraft separation volume can reduce congestion while maintaining key safety requirements. The same tool can also be used as a decision aid for processing requests for unmanned aerial vehicle operations.
+
+Introduction
+Aviation and air travel has established itself as a key economic and social resource in modern times. As the world population increases and becomes ever more interconnected, the demand for air travel will only increase. Currently there are over 100,000 commercial aviation flights and over 200,000 general aviation flights within the national airspace system (NAS) every day. This does not include military sorties or other, special purpose, flights within the NAS. The number of passengers flying to or from the U.S. is expected to grow an
+average of 4.5% annually, with cargo amounts showing a similar increase, while general aviation is expected to
+grow 1% annually. In addition, there is increasing interest, from both government and commercial sectors, in integrating unmanned aerial vehicles (UAV’s) into the NAS. Though full UAV integration poses its own unique set of complications, nevertheless it is only a matter of time before they contribute to the air traffic over the NAS. This constant increase in air traffic within the increasingly congested NAS will require new methods and techniques to efficiently accommo-
+date new traffic.
+
+To address these issues, the US Congress approved plans for the development of the Next Generation Air Transportation System (NextGen). It is an overhaul of the current NAS with the goals of allowing more aircraft to safely fly closer together with more direct
+routes. It is scheduled for implementation in stages between 2012 and 2025 with 5 major elements: (i) Automatic dependent surveillance-broadcast (ADS-B) will replace radar systems with satellite based global positioning information for each aircraft. This infor- mation will be broadcast in realtime to airports another aircraft within a 150 mile radius allowing them to fly closer without jeopardizing safety. (ii) Systemwide information management (SWIM) is a consolidation of multiple information systems into a single coherent system and will reduce redundancy and facilitate information sharing. (iii) NextGen data communication will add data links between aircraft and air traffic controllers to the current two-way voice communication. (iv) NextGen network enabled weather is an ambitious effort to fuse data from tens of thousands of ground, air, and space based sensors into a single national weather information system to provide realtime weather information. (v) NAS voice switch (NVS) will replace multiple existing voice switching systems into a single consolidated air/ground and ground/ground voice communication system.
+
+
+The NextGen system will provide the infrastructure to allow aircraft to safely fly closer together thereby making more efficient use of limited airspace. It will allow aircraft to use more direct routes instead of being constrained to predetermined sky highways thereby
+reducing congestion and reduce fuel costs. With pieces of the NextGen infrastructure coming into place, there is an opportunity to further their benefits by developing software tools that provide added value. This paper focuses on such a software – a visual analysis tool that allows policy makers to see the effects of changing the aircraft separation volume on congestion. The same tool can also be used as a decision aid for processing requests for unmanned aerial vehicle operations. Specifically, this paper will discuss methods
+and tools used to calculate and render air traffic densities over areas of interest, as well as methods for aggregating such traffic densities over different time scales to extract fluctuations and periodic cycles in traffic patterns. We apply these tools to study the effects of possible modifications to the current en-route aircraft separation requirements. These modification, which are based on the characteristics of large fixed wing aircraft, has the potential of increasing the amount of available air space, allowing for future increases in overall air traffic numbers. In addition, we apply the same suite of tools to provide a quick visual inspection of planned UAV operation under different aircraft separation requirements. The studies conducted in this paper are based on a data set provided by NASA’s Aviation Systems Division in charge of air traffic management research. Our investigation shows that our tools can be used to aid evaluation processes to determine, and increase, potentially underutilized airspace.
+
+2. Previous Work
+The main thrust of this paper is on visual analysis
+of air traffic data. Hence, this section focuses on work
+related to visualizing air traffic data. One of the most
+popular technique for visualizing air traffic data is to
+represent the trajectory of each aircraft as an animated
+particle. Many such visualizations are available on
+the web via sites such as youtube. A version that was
+designed by Aaron Koblin [9], and accessible through
+http://www.youtube.com/watch?v=H2qTwvaQ F4,
+demonstrates several techniques and embellishments
+for presenting the flight trajectories. More recently,
+the discrete nature of the flight tracks were smoothed
+out to obtain a continuous estimate of air traffic den-
+sity using a view dependent kernel density estimator
+[10]. Representing air traffic data as a density plot
+is not new. Kellner [8] also used density plots of the
+arrival and departure rates of aircraft at different
+airports to assess their capacity. This paper will use
+similar techniques in visualizing the air traffic data.
+More importantly, our work examines the impact of
+varying minimum aircraft separation policy on air
+traffic density, and also examines if a flight plan, e.g.
+of a UAV operation request, will endanger existing
+flight patterns.
+There are many factors affecting air traffic conges-
+tion and airport capacity. One of those that is control-
+lable and fall under policy decisions is the specification
+
+of minimum separation between aircraft. Currently,
+this is set to 5 nautical miles horizontally, and 1,000
+feet vertically [4] when the aircraft is en-route. This
+limit is adjusted as the aircraft approaches an airport
+and can drop to 3 miles horizontally on landing ap-
+proaches to airports. The relative weight class of the
+leading and following aircraft are also taken into con-
+sideration in such situations in order to reduce risks due
+to wake turbulence [3]. The en-route limit accounts
+for aircraft speed (typical passenger jets fly at aver-
+age speed of 500 miles per hour or just over 8 miles
+per minutes), weather impact on visibility, and wake
+turbulence from leading aircraft, among other factors.
+With the touted capabilities of ADS-B, the NextGen
+enabled weather system, and integrated information
+system, one can theoretically safely reduce the mini-
+mum separation requirements between aircraft. This
+paper provides visual analysis tools to examine the ef-
+fects of different shapes and parameters describing the
+minimum separation volume between aircraft.
+With regards to UAV operation, they are more gen-
+erally referred to as Unmanned Aircraft Systems (UAS)
+[7, 2]. Over the past few years, interest in UAS has
+rapidly increased. This is because of the possibilities
+they offer to both government and commercial inter-
+ests. They would enable a broad range of satellite-like
+abilities, but at a much lower cost. Aerial photogra-
+phy, communications, environmental monitoring, and
+security are some of the abilities that UAS deployment
+could make possible on a large scale. Currently, UAS
+are predominantly used by the Department of Defense
+and the Department of Homeland Security, and often
+outside of national air space (NAS). A handful of UAS
+are allowed to operate inside our NAS, though almost
+exclusively for national security or research purposes.
+However, each UAS operation must be pre-approved
+by the FAA on a case by case basis. This process is
+very tedious and does not scale well to large numbers
+of flights. There are a few studies on risk managment of
+operating UAS. A recent study uses a site-specific non-
+uniform probabilistic background air traffic to study
+the risks [11]. Using the visual analysis tools presented
+in this paper, checking whether the flight plan for a
+UAS will allow for a safe operation within the NAS
+can be accomplished expeditiously.
+
+
+3. Air Traffic Density Volumes
+Air traffic data usually consists of a collection of
+flight trajectories of different aircraft. Each flight tra-
+jectory usually contains information about the type of
+aircraft, origin and destination airports, followed by a
+series of entries that records the time, location, and
+	
+
+	image-----
+altitude of the aircraft. The flight tracks are usu-
+ally recorded in 10 second intervals. Other informa-
+tion such as date, heading, velocity, etc. are generally
+recorded as well, but were not available in the data
+set used in our study. The data set used to test and
+demonstrate our visual analysis tool has an area of in-
+terest that is located in the north eastern part of North
+Dakota, specifically the greater Devils Lake and Grand
+Forks areas. It includes all flight path information from
+flights that took place over an area of approximately
+190 by 165 miles, between the altitudes of 0 and 60,000
+feet from the begining of July 2008 to the end of June
+2009. There are 349,992 unique flight path records in
+this particular data set. This data set is comprised of
+uniquely identified flight paths, each containing lati-
+tude, longitude, and altitude information at 10 second
+intervals for the duration of the flight within the area
+of interest. The time of day and month in which the
+flights took place are specified. However, the specific
+date the flight took place is not included.
+
+An intuitive way to visualize flight paths is by rep-
+resenting each aircraft as a particle and animating the
+trajectory of each aircraft. This results in animations
+such as those found in [9]. An alternative way using
+only a single static visualization is to trace and overlay
+individual flight trajectories. Figure 1 shows an exam-
+ple of such a visualization. Note that because there are
+so many flight trajectories in this data set, displaying
+each path at full intensity will produce an extremely
+cluttered display. Instead, each path is renderedonly 10% opacity (90% transparency). It is only then
+that clusters of similar flight paths can be observed.
+These clusters can in turn be associated with local and
+regional airports and show the prevailing takeoff and
+landing patterns.
+at
+In this paper, we are interested in analyzing air traf-
+fic congestion as a result of policy changes to the sep-
+aration minima criterion, as well as potential conflicts
+of UAS operations within the NAS. The flight trajec-
+tory data set in its current form is not directly suitable
+for such analysis. Instead, we need to create a con-
+flict probability volume that characterizes the proba-
+bility that an aircraft can be found in any location in
+space (and time) and would therefore be in conflict
+with another aircraft (or UAS). In order to create such
+a volume, we essentially need to convert the discrete
+flight tracks into a continuous volumetric data. The
+first issue in creating such a volume is to determine an
+appropriate discretization of the volume of space of in-
+terest. Another issue is how the discrete flight tracks
+are used to produce a smooth continuous volume.
+There were two main factors that we considered in
+order to determine the spatial discretization. The first
+factor is the FAA’s minimum aircraft separation crite-
+rion. This is referred to as the conflict boundary or
+more generally the separation minima. For en-route
+flights, this is specified to be 5 nautical miles horizon-
+tally (30,380 feet), and 1,000 feet vertically for each
+aircraft. Within the terminal area, this is lowered to
+3 nautical miles. This criterion would have discretized
+our volume of interest (190 mi x 165 mi x 60,000 feet)
+into a 38 x 32 x 60 grid. That is, each aircraft takes up
+one voxel. The second factor is determining a good res-
+olution to represent the approximate distance traveled
+by an aircraft in 10 seconds, the time resolution of the
+data. Given the presence of both commercial aircraft
+and many relatively slower general aviation and train-
+ing aircraft used by the University of North Dakota
+Aerospace aviation school, there is no single all pur-
+pose resolution. Speeds can vary between 200 mph
+(2,900 feet per 10 seconds) for the slower personal and
+training aircraft, to 600 mph (8,800 feet per 10 seconds)
+for the faster passenger airliners. The vertical separa-
+
+tion criterion is also greatly influenced by the relative
+weight class of the leading and following aircraft. Tak-
+ing these factors into consideration, we decided to have
+each voxel represent a much smaller volume of 5,000
+feet by 5,000 feet by 500 feet of airspace. Our volume
+of interest is thus discretized using a 208 x 174 x 121
+grid. It should be noted that the volume of interest
+covers a much larger lateral area compared to its ver-
+tical extent. Thus in all our visualizations, there is a
+vertical exaggeration by a factor of ten. This exagger-
+ation allows for easily discernible variations in altitude
+when viewing the volume from various angles.
+The next step in calculating the conflict probability
+volume is to efficiently record the flight path informa-
+tion onto the grid. This process is discussed in the
+next section. Here, we discuss an alternative that also
+provides information about air traffic density. Basi-
+cally, we want to create a density volume that records
+the number of aircraft found at each grid point over
+the duration of interest (e.g. every 10 second inter-
+val, hourly, monthly, or over the entire year). For
+this purpose, there are a number of options ranging
+from a simple nearest-grid-point (NGP) interpolation,
+where the location of an aircraft at each 10 second in-
+terval is associated with the grid point closest to it,
+to more sophisticated kernel based techniques. In this
+paper, we use the cloud-in-cell (CIC) interpolation [6].
+Similar to NGP, the CIC method first determines the
+voxel that contains the flight data point. However, un-
+like NGP, CIC distributes the contribution of the flight
+data point amongst the 8 grid points of the voxel (in-
+stead of the single closest grid point). The contribu-
+tions are weighted according to proximity of the data
+point to each grid point. The weighting function con-
+tains the product of three terms, each of which are
+linear in a dimension, with the total weighting normal-
+ized to unity. If a data point is respectively 25%, 40%,
+and 70% of the way across the cell from the lower front
+left corner in the three dimensions, we attribute 0.75 x
+0.6 x 0.3 of the particle’s mass to that corner [5]. This
+produces a smoother density volume, that does not in-
+cur the cost of more expensive methods such as kernel
+density estimates [13].
+Once processed, the air traffic density volume (and
+later on, the conflict probability volume) needs to be
+visualized. To do this, we used ParaView [1] and the
+open source visualization toolkit Vtk [12] to help with
+our analysis. Two main visualization techniques were
+used. The first is direct volume rendering (for example,
+see Figure 2). While this technique does make relative
+high and low traffic areas discernible, it has a disad-
+vantage. The internal 3D structures of the volume,
+particularly at busy regions such as near airports, are
+
+image
+
+very difficult to discern without the aid of additional
+tools such as cutting planes. This can be alleviatedsome extent by adjusting the transfer function usedthe rendering. However, because the distribution of air
+traffic density is very skewed (towards very low aircraft
+counts, unless right over the airport), histogram equal-
+ization is needed to distinguish slight variations in air-
+craft densities. An alternative is to use isosurfaces. We
+specify different threshold values corresponding to dif-
+ferent density of interest. The different isosurfaces cor-
+responding to these different thresholds are then ren-
+dered as surfaces with different colors and opacity (see
+Figure 3).
+to
+in
+As can be seen in Figure 2 the main thoroughfares
+are clearly visible as blue lines across the map. Areas
+with denser air traffic are also visible as blue shaded
+areas. However, it is hard to see distinct variations be-
+tween low and high traffic areas other than as subtle
+variation of opacity in the shades of blue. This issue
+can be effectively handled with the application of iso-
+surfaces. Once isosurfaces are applied, the resulting
+renderings are much more informative. Figure 3 shows
+

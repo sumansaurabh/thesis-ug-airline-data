@@ -1,0 +1,54 @@
+\section{Introduction}
+Air traffic data usually consists of a collection of flight trajectories of different aircraft. Each flight trajectory usually contains information about the type of aircraft, origin and destination airports, followed by a series of entries that records the time, location, and altitude of the aircraft. The flight tracks are usually recorded in 10 second intervals. Other information such as date, heading, velocity, etc. are generally
+recorded as well, but were not available in the data set used in our study. The data set used to test and demonstrate our visual analysis tool has an area of interest that is New York an Chicago. Two of the largest metropolitan cities in United States of America. It includes all flight path information from flights that took place over an area of approximately 190 by 165 miles, between the altitudes of 0 and 60,000 feet from the begining of Jan 1987 to the end of Dec 2008. There are 349,992 unique flight path records in this particular data set. This data set is comprised of uniquely identified flight paths, each containing latitude, longitude, and altitude information at 10 second intervals for the duration of the flight within the area of interest. The time of day and month in which the flights took place are specified. However, the specific date the flight took place is not included.
+
+\subsection{Flight Data Monitoring}
+Many airlines collect and analyze flight data of routine flights. The process is generally referred as flight data monitoring, which involves data acquisition, transmission, storage and analysis, which are described in detail in this section. By reviewing a number of software tools for flight data analysis, a benchmark of current flight data analysis methods was established. Improvement opportunities were identified from the literature review, which motivated this research.
+\subsection{Anomaly Detection}
+This thesis proposes a new approach that detects abnormal flights from routine airline operations using FDR data and asks domain experts to interpret the results and operational implications. Thus, anomaly detection algorithms will be developed to detect anomalies from FDR data.
+Anomaly detection refers to the problem of detecting an observation (or patterns of observations) that is inconsistent with the majority members of the dataset. It is also referred to as novelty detection, anomaly detection, fault detection, deviation detection, or exception mining in different application domains. A significant number of anomaly detection techniques have been developed. While some of the techniques are generic and can be applied to different application problems, many of them are focused on solving particular types of problems in an application domain.
+
+\subsection{General Anomaly Detection Techniques}
+Many anomaly detection techniques have been developed to address anomaly detection problems in many application domains. Three main approaches have been taken: statistical approach, classification approach, and clustering approach. The categories are not mutually exclusive as some of the techniques adopt concepts from more than one basic approach. 
+For eg. there is anomaly in the flight traffic pattern at the end of year 2001 related to the 9/11 terrorist attack.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 2in]{LNMIIT.png}
+\caption{LNMIIT Logo }
+\label{figure:1}
+\end{figure}
+
+
+Sample table
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Transitions($\triangle_{k-1}, \triangle_k, \triangle_{k+1})$ & Delay of Line $'k'$ & Crosstalk class $C_c$\\
+\hline
+
+$\uparrow-\uparrow , \downarrow-\downarrow, \uparrow-\downarrow, \downarrow-\uparrow, \uparrow- -$ & & \\
+
+,$ \downarrow - -, - - -, - - \uparrow, - - \downarrow$  & 0 & 1\\
+\hline
+
+$\uparrow\uparrow\uparrow, \downarrow\downarrow\downarrow $& 1 & 2\\
+\hline
+
+$\uparrow\uparrow -, \downarrow\downarrow-, -\uparrow\uparrow, -\downarrow\downarrow$ & 1+$\lambda$ &3\\
+\hline
+
+$-\uparrow-, -\downarrow-, \uparrow\downarrow\downarrow, \uparrow\uparrow\downarrow, \downarrow\downarrow\uparrow, \downarrow\uparrow\uparrow$ & 1 +$2\lambda$ & 4\\
+\hline
+
+$-\uparrow\downarrow, -\downarrow\uparrow, \downarrow\uparrow-, \uparrow\downarrow-$ & 1 +$3\lambda$ & 5\\
+\hline
+
+$\uparrow\downarrow\uparrow, \downarrow\uparrow\downarrow $ & 1 +$4\lambda$ & 6\\
+\hline
+
+\end{tabular}
+\caption{Delay and Crosstalk Classes for various 3-bit combinations (transitions)}
+\label{tab:}
+\end{table}

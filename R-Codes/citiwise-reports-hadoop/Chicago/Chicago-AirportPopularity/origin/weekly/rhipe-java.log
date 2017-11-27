@@ -1,0 +1,5 @@
+2015-05-06 01:54:51,491 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-ea960f7a7edbea944d7d1556846b8dc4#rhipe-temp-params-ea960f7a7edbea944d7d1556846b8dc4
+2015-05-06 01:54:51,517 DEBUG [main][org.godhuli.rhipe.RHMR] /results/Chicago/origin/Traffic-week
+2015-05-06 01:54:51,813 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-06 01:54:51,826 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-06 01:54:51,827 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded

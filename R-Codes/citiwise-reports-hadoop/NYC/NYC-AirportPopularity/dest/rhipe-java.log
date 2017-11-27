@@ -1,0 +1,15 @@
+2015-05-05 05:30:16,612 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-5d9dfec7edb77463bd8b4891185889e7#rhipe-temp-params-5d9dfec7edb77463bd8b4891185889e7
+2015-05-05 05:30:16,646 DEBUG [main][org.godhuli.rhipe.RHMR] /results/NYC/Desti/TopAirport
+2015-05-05 05:30:16,866 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-05 05:30:16,890 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-05 05:30:16,891 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded
+2015-05-05 16:15:23,428 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-9669c7e32bb459f06dd92ec8bcb76da8#rhipe-temp-params-9669c7e32bb459f06dd92ec8bcb76da8
+2015-05-05 16:15:23,491 DEBUG [main][org.godhuli.rhipe.RHMR] /results/NYC/Desti/TopAirport
+2015-05-05 16:15:23,824 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-05 16:15:23,924 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-05 16:15:23,924 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded
+2015-05-05 16:25:40,558 INFO  [main][org.godhuli.rhipe.RHMR] Adding to cache file:/tmp/rhipe-temp-params-7df953fd1e3eaf9888f189710cbef256#rhipe-temp-params-7df953fd1e3eaf9888f189710cbef256
+2015-05-05 16:25:40,602 DEBUG [main][org.godhuli.rhipe.RHMR] /results/NYC/Desti/TopAirport
+2015-05-05 16:25:41,341 INFO  [main][org.apache.hadoop.mapreduce.lib.input.FileInputFormat] Total input paths to process : 2
+2015-05-05 16:25:41,452 WARN  [main][org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2015-05-05 16:25:41,453 WARN  [main][org.apache.hadoop.io.compress.snappy.LoadSnappy] Snappy native library not loaded

@@ -1,0 +1,94 @@
+In this thesis, we investigate and visualize data for domestic flights for US airline data in focus with flight orignated at New York and Chicago, the two most densly populated cities in United States of America.The data set contains more than 120 million flight records from October 1987 to December 2008. The thesis reflects the process followed by analysts working with big data: sampling is used to generate hypotheses that are then tested against the complete dataset. The work is similar to the work done by Michael T Crotty\cite{crotty2012Raeligh} 
+
+The computation for the comparison of their informal "rule" and analyses of the distribution of the population values requires coding MapReduce programming modal. R to be used as a tool as a major component for data mining and visulization as R is one of the most powerful tool for statistical data analysis. Many have argued that statistics students need additional facility to express statistical computations. By
+introducing students to commonplace tools for data management, visualization, and reproducible analysis in data science and applying these to real-world scenarios, prepares them to think statistically. The statistical data analysis cycle involves the formulation of
+questions, collection of data, analysis, and interpretation of results. Data preparation and manipulation is not just a first step, but a key component of this cycle. When working with data, analysts must first determine what is needed, describe this solution in terms that a computer can understand, and execute the code.
+
+For analysing airline data we first looked at the variables provided by the data and reports that they cab predict. Here are summary of influential factors for developing predicting system on Airline Data.
+\subsection{On Time Performance} 
+\subsubsection{Factors to be considered when making a Reservation}
+\begin{description}
+  \item[Time Factors]: Month, Day of Week, Departure Time, Arrival Time
+  \item[Location's Factor]: Whether departure or arrival airport is large medium or small.
+  \item[Others]: Distance, Taxi-out, Taxi-in
+\end{description}
+\subsubsection{Causes of Flight Delay and Cancellations}
+\begin{description}
+\item[Air Carrier]: Maintenance or Crew problem, Aircraft Cleaning or Baggage Loading.
+\item[Extreme Weather]: Significant metrological conditions(actual or forecasted), that in the judgement of carrier, delays or prevents the operation of a flight such as tornado, blizzard and hurricane.
+\item[National Aviation System]: Non- Extreme weather conditions, heavy traffic volume and air-traffic control.
+\item[Late- Arriving Aircraft]: A prevoius flight with same aircraft arrived late, causing the present flight to depart late.
+\item[Security]: Delays or Cancellations caused by evacution of terminal or re-boarding of Aircraft becuse of security breach.
+\end{description}
+
+% subsubsection  (end)
+Since the of dataset is very large, real-time visualization is not scalable. If we try to compute a summary of the dataset and visualize it we will either need non-trivial parallel rendering algorithms or significant time to produce a drawing.
+
+For analyzing such big dataset MapReduce programming modal has been proposed to mine the relevant information from dataset and perform statisitical modelling. For e.g. To plot the air traffic pattern originating at NewYork, it is scalable to perform mining operation on the data and extract the flight details orignated at New York. We can than use this data to build a graphical models on Cancellation Rate, Delay Rate monthly as  well as weekly. This modal can be plotted graphically to understand the anomally present in 20 decades New York air traffic history.
+
+The proposed work in thesis builds visulization modal described in four sections. First section mines the data from 120MM airline traffic using Hadoop MapReduce and R. Details of the package is provided above in Introduction section. Section 2 brings the modal of traffic pattern for top 20 busiest air traffic destinations. Chicago the city with highest airline traffic is palced at the top succeeding Atlanta and Dallas Fort-Worth. Section 3 provides the detail of overall airline traffic orignated at Chicago. This section also visualizes the pattern for flight cancellation and delay in Chicago in respect with its two airports O'Hare International and Chicago Midway. Section 4 modals the similar graph as of Chicago for the airport in New York: LaGuardia and John F Kennedy.
+
+\section{Mining Data Using Hadoop and Rhipe}
+
+Hadoop MapReduce programming modal is built in Java but hadoop provides utility to allow MapReduce programs to run from most of the famous languages. Hadoop streaming is a utility that comes with the Hadoop distribution. The utility allows you to create and run MapReduce jobs with any executable or script as the mapper and/or the reducer in any programming language. Both the mapper and the reducer are executables that read the input from stdin (line by line) and emit the output to stdout. The utility will create a Map/Reduce job, submit the job to an appropriate cluster, and monitor the progress of the job until it completes. resently the supported languages are Python, C, R, Scala,Ruby.
+
+
+Many pacakages in R are present which allows to build mapreduce programs but due to good doucmentation of Rhipe, it has been used by author to develop mapreduce code to mine data. RHIPE is the R and Hadoop Integrated Programming Environment. RHIPE is a merger of R and Hadoop. R is the widely used, highly acclaimed interactive language and environment for data analysis.Hadoop consists of the Hadoop Distributed File System (HDFS) and the MapReduce distributed compute engine. RHIPE allows an analyst to carry out D\&R analysis of complex big data wholly from within R. RHIPE communicates with Hadoop to carry out the big, parallel computations. 
+
+For building mapreduce application location data for each row is taken as key value and total number of key count is obtained for  <key:value> pair. The value determines the popularity of the location similar to the word count example. Similarly cancellation and delay rate is calculated for each flight orignated from Chicago and New York.
+
+
+\section{Evaluting Air-Traffic Patterns of USA Flights}
+What are the busiest cities by total flight traffic. John F Keneddy will feature, but what are the others? For each airport code compute the number of inbound, outbound and all flights. The figure Log of time to complete vs log of total counts plots the traffic pattern. 
+
+\begin{lstlisting}[language=R]
+  
+  map <- expression({
+  #For each input record, parse out required fields and output new record:
+  extractTop20 = function(line) {
+    fields <- unlist(strsplit(line, "\\,"))
+    #Skip header lines and bad records:
+    if (!(identical(fields[[1]], "Year")) \& length(fields) == 29) {
+      origin <- fields[[17]]
+      destination <- fields[[18]]
+      #Skip records where departure dalay is "NA":
+      if (!(identical(origin, "NA"))) {
+        #field[9] is carrier, field[1] is year, field[2] is month:
+        rhcollect(paste(fields[[1]], "\t", origin, sep=""), 1)
+      }
+      if (!(identical(destination, "NA"))) {
+        # field[9] is carrier, field[1] is year, field[2] is month:
+       rhcollect(paste(fields[[1]], "\t", destination, sep=""),1)
+      }
+    }
+  }
+  #Process each record in map input:
+  lapply(map.values, extractTop20))
+\end{lstlisting}
+
+\begin{lstlisting}[language=R]
+reduce <- expression(
+  #intialization of variable pre
+  pre = {
+    count <- numeric(0)
+  },reduce = {
+    # Depending on size of input, reduce will get called multiple times
+    # for each key, so accumulate intermediate values in delays vector: 
+    count <- c(count, as.numeric(reduce.values))
+  },
+  post = {
+    # Process all the intermediate values for key:
+   tot <- sum(count)
+   rhcollect(reduce.key, tot)            
+  })
+\end{lstlisting}
+
+MapReduce code showed above collects the data in form of key, value pair. Generated results are than employed for further processing and calculating top busiest cities in respect  to Airline traffic.
+
+\section{Evaluating Chicago Air-Traffic Pattern }
+The busiest airport displayed by Figure \ref{fig1} is Chicago. Chicago O'Hare international is one of the busiest airport on Earth. Chicago traffic data are collected with Hadoop MapReduce technique. Time required for MapReduce operations were approximately 5hrs. The generated result were than used for performing cancellation rate, delay rate weekly as well as monthly.
+
+\section{Evaluating NewYork City Air-Traffic Pattern}
+NYC, though placed at 6th as most busiest airport but is one of the most populated cities in United States. Because of the advent of 9/11 in WTC, New York has been to observe the anomally in New York Air traffic.
+
+
